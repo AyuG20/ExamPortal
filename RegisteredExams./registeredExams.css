@@ -1,0 +1,8 @@
+.dummy{
+	color : black;
+}
+.attempted{
+	--sds-c-button-brand-color-background : gray;
+	--sds-c-button-brand-color-background-hover : gray;
+	--sds-c-button-brand-color-border : black;
+}

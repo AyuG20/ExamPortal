@@ -1,0 +1,42 @@
+<template>
+	<lightning-card variant="Narrow" title="Registered Exams" icon-name="standard:account">
+		<div class="slds-m-around_medium">
+			<table class="slds-table slds-table_cell-buffer slds-table_bordered">
+				<tr class="slds-line-height_reset">
+					<th scope="col"> Exam-Name </th>
+					<th scope="col"> Scheduled Date </th>
+					<th scope="col"> Action </th>
+				</tr>
+				<template for:each={regExam} for:item="reg">
+					<tr key={reg.Id} class="slds-hint-parent">
+						<td scope="row"> {reg.Exam_Type__c} </td>
+						<td scope="row"> {reg.Exam_Scheduled_Date__c} </td>
+						<td>
+							<template lwc:if={reg.isSubmitted__c}>
+								<lightning-button class="attempted" variant="brand" label="Attempted" title={reg.Id}
+									onclick={handleAttempt}></lightning-button>
+							</template>
+							<template lwc:elseif={reg.isUpcoming__c}>
+    							<lightning-button variant="base" label="Upcoming" title={reg.Id} onclick={handleAttempt}></lightning-button>
+							</template>
+							<template lwc:elseif={reg.isOverdue__c}>
+    							<strong><lightning-button style="color:black;" disabled variant="base" label="Overdue" title={reg.Id} onclick={handleAttempt}></lightning-button></strong>
+							</template>
+							<template lwc:else>
+								<lightning-button onclick={handleAttempt} icon-name="utility:edit" title={reg.Id}
+									variant="brand" label="Attempt"></lightning-button>
+							</template>
+						</td>
+
+						<td>
+							<template lwc:if={reg.isSubmitted__c}>
+								<lightning-button variant="brand" label="Check Result" title={reg.Id}
+									onclick={handleResult}></lightning-button>
+							</template>
+						</td>
+                    </tr>
+				</template>
+</table>
+</div>
+</lightning-card>
+</template>

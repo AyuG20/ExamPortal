@@ -1,0 +1,28 @@
+<template>
+	<lightning-card variant="Narrow">
+		<div class="slds-m-around_medium slds-text-body_regular">
+			<template for:each={quelst} for:item="que">
+				<div key={que.Id} class="slds-m-around_medium slds-text-body_regular">
+					<div>
+						<h1><b>{que.Question_Desc__c}</b></h1>
+						<br/>
+					</div>
+					<div key={que.Id} class="slds-m-around_medium slds-text-body_regular">
+						<input name={que.Id} type="radio" value={que.Option_One__c} onchange={handleOptions}/> &nbsp; {que.Option_One__c}
+					</div>
+					<div key={que.Id} class="slds-m-around_medium slds-text-body_regular">
+						<input name={que.Id} type="radio" value={que.Option_Two__c} onchange={handleOptions}/> &nbsp; {que.Option_Two__c}
+					</div>
+					<div key={que.Id} class="slds-m-around_medium slds-text-body_regular">
+						<input name={que.Id} type="radio" value={que.Option_Three__c} onchange={handleOptions}/> &nbsp; {que.Option_Three__c}
+					</div>
+					<div key={quelst.Option_Four__c} class="slds-m-around_medium slds-text-body_regular">
+						<input name={que.Id} type="radio" value={que.Option_Four__c} onchange={handleOptions}/> &nbsp; {que.Option_Four__c}
+					</div>
+				<hr key={que.Id} />
+			</div>
+			</template>
+		   <lightning-button variant="brand" label="Submit" title="titleName" onclick={handleSubmit}></lightning-button>
+		</div>
+	</lightning-card>
+</template>

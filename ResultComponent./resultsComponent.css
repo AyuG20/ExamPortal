@@ -1,0 +1,27 @@
+.dummy{
+	color : black;
+}
+
+.txt{
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+	background-color:rgb(1, 118, 211);
+	border-radius: 40%;
+	text-decoration: underline;
+	/* margin-top: 10px; */
+}
+
+.back-btn {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.grade{
+	margin-top: 20px;
+	background-color: gray;
+	color: black;
+	padding: 10px;
+	font-weight: bold;
+}

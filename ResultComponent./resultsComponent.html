@@ -1,0 +1,26 @@
+<template>
+	<lightning-card variant="Narrow" >
+        <h2 class="txt"> Final Result </h2>
+		<div class="slds-m-around_medium slds-text-body_regular">
+			<table class="slds-table slds-table_cell-buffer slds-table_bordered">
+				<tr>
+					<th scope="col" colspan="2"><b> Questions </b></th>
+					<th scope="col"> <b>Selected Answer</b> </th>
+					<th scope="col"><b> Correct Answer </b></th>
+                    <th scope="col"><b> Score(Right(1)/Wrong(0))</b></th>
+				</tr>
+				<template for:each={resultlst} for:item="res">
+					<tr key={res.Id}>
+                        <td scope="row" colspan="2">{res.Question__c}</td>
+                        <td scope="row">{res.Selected_Option__c}</td>
+                        <td scope="row">{res.Correct_Option__c}</td>
+                        <td scope="row">{res.Score__c}</td>
+					</tr>
+				</template>
+				
+			</table>
+			<h3 class="grade"> Final Result : {grade}</h3>
+			<lightning-button class="back-btn" variant="brand" label="Back" onclick={handleBack}></lightning-button>
+		</div>
+	</lightning-card>
+</template>

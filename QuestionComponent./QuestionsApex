@@ -1,0 +1,7 @@
+public class QuestionsApex {
+    @AuraEnabled
+    public static List<Question__c> fetchQuestions(String examId){
+        return[Select Id,ExamQuesRel__r.Id,Question_Desc__c,Option_One__c,Option_Two__c,Option_Three__c,Option_Four__c,Correct_Option__c 
+        From Question__c Where ExamQuesRel__r.Id =: examId] ;
+    }
+}

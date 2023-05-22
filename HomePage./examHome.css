@@ -1,0 +1,13 @@
+.dummy{
+	color : black;
+}
+
+.welcome{
+	text-align: center;
+	font-size: 50px;
+	margin-top: 30px;
+	/* width: 80%; */
+}
+.username{
+	color: rgb(1, 118, 211);
+}

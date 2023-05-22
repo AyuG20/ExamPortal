@@ -1,0 +1,27 @@
+<template>
+    <lightning-card  variant="Narrow"  title="Exam Registration" icon-name="standard:account">
+        <div class="slds-m-around_medium slds-text-body_regular">
+            <!-- <lightning-input  onchange={onChangeMail} type="email" variant="standard" name="name" label="Enter Your Email" placeholder="sample@domain.com" required></lightning-input> -->
+            <div class="slds-form-element">
+                <label class="slds-form-element__label">Select Examination</label>
+                <div class="slds-form-element__control">
+                    <div class="slds-select_container">
+                        <select class="slds-select" onchange={onChangeSelExam}>
+                            <option>--Select--</option>
+                            <template for:each={examtypelst} for:item="exam">
+                                <option key={exam.Id}>{exam.Name}</option>
+                            </template>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <lightning-input onchange={onChangeExamDate} min={getStartDate} max={getEndDate} type="date" variant="standard" name="name" label="Exam Date" placeholder="Schedule Exam Date"></lightning-input>
+
+        </div>
+        <div class="slds-m-around_medium btn">
+            <lightning-button variant="brand" style="background-color:blue" label="Register For Exam" title="titleName" onclick={saveStudent}></lightning-button>
+        </div>
+        
+    </lightning-card>
+
+</template>

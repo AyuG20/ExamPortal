@@ -1,0 +1,42 @@
+public class ExamRegisteredApex {
+    @AuraEnabled
+    public static List<Exam_Registration__c> fetchExamRegistered(String userId){
+        return [SELECT Id,ExamId__c,Exam_Type__c,isSubmitted__c,Exam_State__c,isOverdue__c,isUpcoming__c,Student_Email__c,Exam_Scheduled_Date__c From Exam_Registration__c Where CreatedById =:userId];
+    }
+
+    @AuraEnabled
+    public static void updateExamState(String examId, String userId){
+        List<Exam_Registration__c> resList = [Select Id,Name,Student_Email__c,Exam_Type__c,ExamId__c,isSubmitted__c,isUpcoming__c,Exam_Scheduled_Date__c from Exam_Registration__c where CreatedById = :userId and ExamId__c= :examId];
+        
+        for(Exam_Registration__c res: resList){
+            res.Exam_State__c = 'Attempted';
+            res.isSubmitted__c = 1;
+        }
+        
+        update resList;
+    }
+    @AuraEnabled
+    public static void updateExamUpcoming(String examId, String userId) {
+        List<Exam_Registration__c> resList = [SELECT Id, Name, Student_Email__c, Exam_Type__c, ExamId__c,isOverdue__c, isSubmitted__c, Exam_Scheduled_Date__c, Exam_State__c, isUpcoming__c FROM Exam_Registration__c WHERE CreatedById = :userId AND ExamId__c = :examId];
+
+        for(Exam_Registration__c res : resList) {
+            res.isUpcoming__c = 0;
+            // res.isOverdue__c = 1;
+            system.debug(res);
+        }
+
+    update resList;
+    }
+       @AuraEnabled
+    public static void updateExamMissed(String examId, String userId) {
+        List<Exam_Registration__c> resList = [SELECT Id, Name, Student_Email__c, Exam_Type__c, ExamId__c,isOverdue__c, isSubmitted__c, Exam_Scheduled_Date__c, Exam_State__c, isUpcoming__c FROM Exam_Registration__c WHERE CreatedById = :userId AND ExamId__c = :examId];
+
+        for(Exam_Registration__c res : resList) {
+            res.isUpcoming__c = 0;
+            res.isOverdue__c = 1;
+            system.debug(res);
+        }
+
+    update resList;
+    }
+}

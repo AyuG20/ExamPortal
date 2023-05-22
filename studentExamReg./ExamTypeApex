@@ -1,0 +1,6 @@
+public class ExamTypeApex {
+    @AuraEnabled
+    public static List<Exam_Type__c> fetchExamType(){
+        return[Select Id,Name,Available_Start_Date__c,Available_End_Date__c From Exam_Type__c where Available_End_Date__c >= Today];
+    }
+}

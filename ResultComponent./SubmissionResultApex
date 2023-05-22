@@ -1,0 +1,7 @@
+public class SubmissionResultApex {
+    @AuraEnabled
+    public static List<Exam_Result__c> fetchResult(String examId,String userId){
+         List<Exam_Result__c> finalResult =  [SELECT Id,ExamId__c,Score__c,Question__c,Selected_Option__c,Correct_Option__c From Exam_Result__c where ExamId__c = :examId and CreatedById = :userId];
+         return finalResult;
+    }
+}

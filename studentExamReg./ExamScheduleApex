@@ -1,0 +1,6 @@
+public class ExamScheduleApex {
+    @AuraEnabled(cacheable=true)
+    public static List<Exam_Type__c> fetchExamDate(String name){
+        return [Select Id,Name,Available_Start_Date__c,Available_End_Date__c From Exam_Type__c where Name =:name];
+    }
+}

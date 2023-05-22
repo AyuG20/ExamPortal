@@ -1,0 +1,6 @@
+public class OptionsApex {
+    @AuraEnabled
+    public static void setExamResults(List<Exam_Result__c> res){
+        insert res;
+    }
+}

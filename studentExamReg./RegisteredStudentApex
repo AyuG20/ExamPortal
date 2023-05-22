@@ -1,0 +1,12 @@
+public class RegisteredStudentApex {
+    @AuraEnabled
+  public static void setStudent(Exam_Registration__c stu,String userId){
+    List<Exam_Registration__c> exRegs = [SELECT Id, Name, Student_Email__c, Exam_Type__c, ExamId__c, Exam_Scheduled_Date__c	 FROM Exam_Registration__c WHERE CreatedById = :userId];
+    for(Exam_Registration__c ex : exRegs) {
+    if(ex.ExamId__c == stu.ExamId__c) {
+        throw new AuraHandledException('You have already appeared for this exam');
+      }
+    }
+    insert stu;
+  }
+}
